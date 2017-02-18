@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>E-Ticket Booking</title>
+
+    <!-- Bootstrap -->
+    <link href="~/Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/fractionslider.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+    <script src="~/Scripts/jquery.fractionslider.js"></script>
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <style>
+        .field-validation-error {
+            color: red;
+            -webkit-border-radius: 1px;
+            -moz-border-radius: 1px;
+            border-radius: 1px;
+            -moz-box-shadow: 0 0 5px #888;
+            -webkit-box-shadow: 0 0 5px #888;
+            box-shadow: 0 0 5px #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>Admin Portal
+                    </h1>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+
+            <nav class="col-sm-2">
+                <!--nav-->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!--logo-->
+
+                    </div>
+                    <!--/logo-->
+                    <div class="col-sm-12">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li class="active"><a href="../Admin"><span class=""></span>&nbsp;&nbsp;Home</a></li>
+                           @* <li><a href="../Admin/Ticket"><span class=""></span>&nbsp;&nbsp;Tickets</a></li>
+                            <li><a href="../Admin/FeedbackList"><span class=""></span>&nbsp;&nbsp;Feedbacks</a></li>*@
+                            <li><a href="../Admin/UserList"><span class=""></span>&nbsp;&nbsp;User List</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </nav>
+            <!--/nav-->
+
+            <div class="col-sm-8">
+
+                <div class="row">
+                    @RenderBody()
+                </div>
+
+                <div class="row">
+                    <br />
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!--/.content-->
+
+    <footer class="row footer">
+        <div class="panel-footer">
+            <p>&copy; 2014 E-Ticket.com. All rights reserved. Designed by group of 4.2.</p>
+        </div>
+    </footer>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>*@
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+    <script src="~/Scripts/bootstrap/bootstrap.min.js"></script>
+</body>
+
+</html>

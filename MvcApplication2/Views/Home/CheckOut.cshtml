@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CheckOut</h2>
+<div class="alert alert-info" id="checkOutDiv">
+    @if (ViewBag.NoSeat == "1")
+    {
+        <div class="row">
+            <table class="">
+                <tr>
+                    <td>Train : </td>
+                    <td>@ViewBag.trainName</td>
+                </tr>
+                <tr>
+                    <td>From :</td>
+                    <td>@ViewBag.departurePlace</td>
+                </tr>
+                <tr>
+                    <td>To :</td>
+                    <td>@ViewBag.destinationPlace</td>
+                </tr>
+                <tr>
+                    <td>Deperture Time :</td>
+                    <td>@ViewBag.departureTime</td>
+                </tr>
+                <tr>
+                    <td>Seats :</td>
+                    <td>@ViewBag.Seats</td>
+                </tr>
+            </table>
+        </div>
+        <div class="row">
+            <br />
+            <hr />
+        </div>
+        <div class="row">
+            <fieldset>
+                <legend>Credit card info</legend>
+
+                <div class="form-group">
+                    <input type="text" class="form-control" id="" placeholder="Enter credit card number">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="" placeholder="Credit Card Verification Code">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="" placeholder="Expiry date ex. MM/YYYY">
+                </div>
+
+                <button type="submit" class="btn btn-default" id="btnCheckOut">Checkout</button>
+
+            </fieldset>
+        </div>
+    }
+    else
+    {
+        <div>
+            <p>
+                Choose ticket please, then come for checkout :)
+            </p>
+        </div>
+    }
+</div>
+
+<div class="row" style="display:none;" id="messageDiv">
+    <div class="alert alert-success">
+        <p>
+            Congratulations!
+        </p>
+        <p>
+            You have done enough to complete the process!
+        </p>
+        <p>
+            Have a nice day! :)
+        </p>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#btnCheckOut').click(function () {
+            //checkOutDiv messageDiv
+            $("#checkOutDiv").css("display", "none");
+            $("#messageDiv").css("display", "block");
+        });
+    });
+</script>

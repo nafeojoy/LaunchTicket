@@ -1,0 +1,78 @@
+﻿@model IEnumerable<MvcApplication2.Models.SeatModel>
+
+
+@if (@ViewBag.User == "0")
+{
+    <div class="alert alert-info">
+        <b>
+            Login or signout for booking ticket!!
+        </b>
+
+    </div>
+}
+
+
+<style>
+    .forID {
+    }
+</style>
+
+<script src="~/Scripts/bootstrap/tooltip.js"></script>
+<div class="alert alert-info">
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <td style="display: none;">ID</td>
+                    <td style="display: none;">BogieID</td>
+                    <td>Seat Number</td>
+                    <td style="display: none;">Availability</td>
+                    <td>Availability</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="forID">
+                        <td style="display: none;">@item.ID</td>
+                        <td style="display: none;">@item.BogieID</td>
+                        <td>@item.SeatNumber</td>
+                        <td style="display: none;">@item.IsAvailable</td>
+                        @if (@item.IsAvailable)
+                        {
+                            <td style="background-color: #428bca; color: white; cursor: pointer;">
+                                Available
+                                <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="right" title="Click here to book this seat.">Click To Book</button>
+                            </td>
+                        }
+                        else
+                        {
+                            <td style="background-color: #d4d4d4; color: black;">Booked</td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    $('.btn-default').tooltip();
+    $(document).ready(function () {
+        //$('.btn-default').click(function () {
+        //    var IDVal = $('.forID').val();
+        //    alert(IDVal);
+        //    var bID = $(this).find('input:first').val();
+        //    var tID = $(this).find('input:eq(1)').val();
+        //    $.ajax({
+        //        url: '/Ticket/_SeatDetails',
+        //        type: 'GET',
+        //        data: { bogieID: bID },
+        //        success: function (pageHTML) {
+        //            $("#seatDetailsDiv").html('');
+        //            $("#seatDetailsDiv").html(pageHTML);
+        //        }
+        //    });
+        //});
+    });
+</script>

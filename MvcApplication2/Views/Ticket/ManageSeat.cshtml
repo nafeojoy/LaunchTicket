@@ -1,0 +1,198 @@
+﻿@model IEnumerable<MvcApplication2.Models.BogieModel>
+
+@{
+    ViewBag.Title = "ManageSeat";
+}
+<h2>Bogie and Seat</h2>
+<hr />
+<style>
+    .detectClick {
+    }
+
+        .detectClick :hover {
+            background-color: gray;
+        }
+</style>
+
+<div class="alert alert-info">
+    <div class="row">
+        <p>
+            Here the bogies are displayed along with total number of seats.
+        </p>
+
+        <label>Choose bogie</label>
+        <hr />
+    </div>
+
+    <div class="row">
+
+        @foreach (var item in Model)
+        {
+            <div class="col-sm-2 detectClick" style="cursor: pointer;">
+                <input type="hidden" name=@item.ID value=@item.ID id=@item.ID />
+                <input type="hidden" name=@item.trainID value=@item.trainID id=@item.trainID />
+                <a href="#" style="text-decoration: none;"><b>@item.bogieTitle</b><span class="badge">@item.noOfSeats</span></a>
+            </div>
+        }
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Information</h4>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <div class="alert alert-info">
+                    <p>
+                        Your ticket has been booked.
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" id="btnYes">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal 2-->
+<div class="modal fade" id="ticketConfirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Information</h4>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <div class="alert alert-info">
+
+                    Are you sure to book seat :<input type="text" name="txtMsg" value="" readonly="readonly" id="txtMsg" /> ?
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" id="btnConfirmBook">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal-->
+<div class="modal fade" id="loginMsgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Information</h4>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <div class="alert alert-info">
+                    <p>
+                        You have to login to book a seat.
+                        <a href="../Home/Login">Click Here</a> to login.
+                    </p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="seatDetailsDiv">
+</div>
+
+<input type="hidden" name="hfSeatID" value="" id="hfSeatID" />
+<input type="hidden" name="hfSeatNumber" value="" id="hfSeatNumber" />
+<input type="hidden" name="hfBogie" value="" id="hfBogie" />
+
+<script>
+    $(document).ready(function () {
+        $('.detectClick').click(function () {
+            var bID = $(this).find('input:first').val();
+            var tID = $(this).find('input:eq(1)').val();
+            $.ajax({
+                url: '/Ticket/_SeatDetails',
+                type: 'GET',
+                data: { bogieID: bID },
+                success: function (pageHTML) {
+                    $("#seatDetailsDiv").html('');
+                    $("#seatDetailsDiv").html(pageHTML);
+                    //forID
+                    $('.forID').click(function () {
+                        var seatID = $(this).find('td:eq(0)').html();
+                        var seatNumber = $(this).find('td:eq(2)').html();
+                        var bogieID = $(this).find('td:eq(1)').html();
+
+                        document.getElementById("hfSeatID").value = seatID;
+                        document.getElementById("hfSeatNumber").value = seatNumber;
+                        document.getElementById("hfBogie").value = bogieID;
+
+                        document.getElementById("txtMsg").value = seatNumber;
+                        //alert(seatID + " ### " + seatNumber + " ### " + bogieID);
+                        //ticketConfirmModal
+                        $('#ticketConfirmModal').modal('show');
+
+                    });
+                }
+            });
+        });
+
+        $('#btnConfirmBook').click(function () {
+            $('#ticketConfirmModal').modal('hide');
+
+            var seatID = document.getElementById("hfSeatID").value;
+            var seatNumber = document.getElementById("hfSeatNumber").value;
+            var bogieID = document.getElementById("hfBogie").value;
+
+
+            $.ajax({
+                url: '/Ticket/BookTicket',
+                type: 'GET',
+                data: { seatID: seatID, seatNumber: seatNumber, bogieID: bogieID },
+                success: function (result) {
+                    if (!result.success) {
+                        //loginMsgModal
+                        $('#loginMsgModal').modal('show');
+                        return;
+                    }
+
+                    $.ajax({
+                        url: '/Ticket/_SeatDetails',
+                        type: 'GET',
+                        data: { bogieID: bogieID },
+                        success: function (pageHTML) {
+                            $("#seatDetailsDiv").html('');
+                            $("#seatDetailsDiv").html(pageHTML);
+                            $('.forID').click(function () {
+                                var seatID = $(this).find('td:eq(0)').html();
+                                var seatNumber = $(this).find('td:eq(2)').html();
+                                var bogieID = $(this).find('td:eq(1)').html();
+
+                                document.getElementById("hfSeatID").value = seatID;
+                                document.getElementById("hfSeatNumber").value = seatNumber;
+                                document.getElementById("hfBogie").value = bogieID;
+
+                                document.getElementById("txtMsg").value = seatNumber;
+                                //alert(seatID + " ### " + seatNumber + " ### " + bogieID);
+                                //ticketConfirmModal
+                                $('#ticketConfirmModal').modal('show');
+
+                            });
+                        }
+                    });
+                }
+            });
+        });
+    });
+</script>

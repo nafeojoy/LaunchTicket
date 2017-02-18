@@ -1,0 +1,105 @@
+﻿@model IEnumerable<MvcApplication2.Models.TrainDetailsModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Ticket</h2>
+<hr />
+
+<div class="col-sm-12">
+    <div class="alert alert-info">
+        <p>
+            Click on the prefered launch details.
+        </p>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <td style="display: none;">ID     </td>
+                    <td>Train   </td>
+                    <td>Deperture Time</td>
+                    <td>Deperture Place</td>
+                    <td>Destination</td>
+                    <td>Total Bogies</td>
+                     <td>Fare</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td style="display: none;">@item.ID</td>
+                        <td>@item.trainName</td>
+                        <td>@item.depertureTimeString</td>
+                        <td>@item.departurePlace</td>
+                        <td>@item.destinationPlace</td>
+                        <td>@item.noOfBogie</td>
+                        <td>@item.fare</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<input type="hidden" name="hfTrainID" value="" id="hfTrainID" />
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Information</h4>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-info">
+                    <p>
+                        Are you sure to buy a ticket for the following launch ?
+                    </p>
+                    Train Name :<input type="text" name="" value="" disabled="disabled" id="lblTrainName" />
+
+                    Train Time :<input type="text" name="" value="" disabled="disabled" id="lblTrainTime" />
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-primary" id="btnYes">Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+    .table-hover {
+        cursor: pointer;
+    }
+</style>
+<script src="~/Scripts/modal.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.table tr').click(function () {
+            var id = $(this).find('td:first').html();
+            var trainName = $(this).find('td:eq(1)').html();
+            var deptTime = $(this).find('td:eq(2)').html();
+            document.getElementById("hfTrainID").value = id;
+            document.getElementById("lblTrainName").value = trainName;
+            document.getElementById("lblTrainTime").value = deptTime;
+
+            $('#myModal').modal('show');
+            //alert(appName);
+
+        });
+
+        $('#btnYes').click(function () {
+            $('#myModal').modal('hide');
+            window.location = 'Ticket/ManageSeat?trainID=' + document.getElementById("hfTrainID").value;
+        });
+    });
+</script>

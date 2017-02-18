@@ -1,0 +1,136 @@
+﻿@model IEnumerable<MvcApplication2.Models.Ticket>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Ticket</h2>
+
+
+
+<p>
+    @using (Html.BeginForm()){
+        <text> Start </text>@Html.DropDownList("Start", new SelectList(ViewBag.Start))
+        <text> Destination </text>@Html.DropDownList("Destination", new SelectList(ViewBag.Destination))
+    
+        <text> Date </text>@Html.DropDownList("Date", new SelectList(ViewBag.Date))
+       
+        
+  //       br><text>Date </text> //@Html.DropDownList("Date", new SelectList(Dat))
+         
+  //<text> Date </text>  <select name="date">
+  //<option value="1">13/01/15</option>
+  //<option value="2">14/01/15</option>
+  //<option value="3">15/01/15</option>
+  //<option value="4">16/01/15</option>
+  //          </select>
+       
+        
+        
+        
+        <input type="submit" class="btn btn-primary" value="Search" />
+    }
+
+</p>
+
+<table class="table table-striped table-bordered " style ="text-align:center">
+    <tr >
+
+        <th style ="text-align:center">
+            @Html.DisplayNameFor(model => model.Start)
+        </th>
+        <th style ="text-align:center">
+            @Html.DisplayNameFor(model => model.Destination)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.LC_ID)
+        </th>*@
+        
+        <th style ="text-align:center">
+            Launch Name
+        </th>
+        <th style ="text-align:center">
+            Total Available
+        </th>
+        <th style ="text-align:center">
+            Departure Time
+        </th>
+        <th style ="text-align:center">
+            Deck Fare
+        </th>
+        <th style ="text-align:center">
+            First Class Fare
+        </th>
+        <th style ="text-align:center">
+            Cabin Fare
+        </th>
+        
+        @*<th></th>*@
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.L_ID)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.Start)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Destination)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.LC_ID)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.L_Name)
+        </td>
+        <td>
+
+            @Html.DisplayFor(modelItem=>item.TotalTicket)
+
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dept_Time)
+        </td>
+        <td style ="text-align:inherit">
+            @Html.DisplayFor(modelItem => item.Fare_Deck)
+            <a class="btn btn-info" style ="text-align:right" href="@Url.Action("Book", "Booking", new  { id=item.L_ID,type=1})">  Book </a>
+              <select style ="text-align:right">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+            </select>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fare_1st_Class)
+            <a class="btn btn-info" href="@Url.Action("Book", "Booking", new  { id=item.L_ID,type=2})">  Book </a>
+            <select>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+            </select>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fare_Cabin)
+            <a class="btn btn-info" href="@Url.Action("Book", "Booking", new  { id=item.L_ID,type=3})">  Book </a>
+              <select>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+            </select>
+            
+        </td>
+      
+    </tr>
+    
+}
+
+</table>
+
+

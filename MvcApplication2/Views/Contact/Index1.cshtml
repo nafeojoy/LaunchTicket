@@ -1,0 +1,97 @@
+﻿@model MvcApplication2.Models.FeedbackModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Contact Us</h2>
+<hr />
+
+<div class="col-sm-6">
+    <div class="alert alert-info">
+
+        <p>
+            
+        </p>
+        <table style="width:320px">
+<tr>
+  <th>NAME of the Post</th>
+  <td></td>		
+  <th>Phone No.</th>
+  </tr>
+<tr>
+  <td>Divisional Launch Manager/Dhaka</td>
+  <td></td>		
+  <td>02-7119068</td>
+</tr>
+<tr>
+  <td>Launch Information Center/Dhaka(Purana Paltan)</td>
+  <td></td>		
+  <td>02-9570745</td>
+</tr>
+
+    <tr>
+  <td>Divisional Launch Manager/Barisal</td>
+  <td></td>		
+  <td>01711506130</td>
+</tr>
+
+    <tr>
+  <td>Divisional Launch Manager/Jhalokathi</td>
+  <td></td>		
+  <td>01711546136</td>
+</tr>
+             <tr>
+  <td>Area Operating Manager /Chadpur</td>
+  <td></td>		
+  <td>01711692628</td>
+</tr>
+</table>
+
+    </div>
+</div>
+
+
+<div class="col-sm-6">
+    <h3>Send your feedback to us!</h3>
+    <hr />
+
+    @using (Html.BeginForm("Index","FeedBack", FormMethod.Post)) 
+    {
+        <input type="text" name="SName" value="" />
+        <input type="text" name="SEmail" value="" />
+        <input type="text" name="SSubject" value="" />
+        <input type="text" name="SMessage" value="" />
+        <input type="submit" name="test" value="Enter" />
+    }
+
+   @*<div class="form-group">
+        @Html.TextBoxFor(model => model.SenderName, new { @class = "form-control", @placeholder = "your name" })
+        @Html.ValidationMessageFor(model => model.SenderName)
+    </div>
+
+
+    <div class="form-group">
+        @Html.TextBoxFor(model => model.SenderEmail, new { @class = "form-control", @placeholder = "your email" })
+        @Html.ValidationMessageFor(model => model.SenderEmail)
+    </div>
+
+
+    <div class="form-group">
+        @Html.TextBoxFor(model => model.Subject, new { @class = "form-control", @placeholder = "feedback subject" })
+        @Html.ValidationMessageFor(model => model.Subject)
+    </div>
+
+
+    <div class="form-group">
+        @Html.TextAreaFor(model => model.Message, new { @class = "form-control", @placeholder = "Message details" })
+        @Html.ValidationMessageFor(model => model.Message)
+    </div>
+
+    <div class="form-group">
+
+        <div style="float: right;">
+            <button type="submit" class="btn btn-primary">Send Feedback</button>
+        </div>
+    </div>*@
+</div>

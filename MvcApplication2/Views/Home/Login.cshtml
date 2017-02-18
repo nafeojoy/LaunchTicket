@@ -1,0 +1,33 @@
+﻿@model MvcApplication2.Models.LoginModel
+
+@{
+    ViewBag.Title = "Sign in";
+}
+
+<h1>Sign in</h1>
+<hr />
+
+
+@using (Html.BeginForm("Login", "Home", FormMethod.Post, new { @role = "form", @id = "frm_userLogin" }))
+{
+    @Html.ValidationSummary(true)
+    
+    <div class="col-sm-6">
+
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.user_name, new { @class = "form-control", @placeholder = "your username" })
+            @Html.ValidationMessageFor(model => model.user_name)
+        </div>
+
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.password, new { @type = "password", @class = "form-control", @placeholder = "enter your password" })
+            @Html.ValidationMessageFor(model => model.password)
+        </div>
+
+        <div style="float: right;">
+            <button type="submit" class="btn btn-primary">Sign In</button>
+        </div>
+    </div>
+    
+
+}

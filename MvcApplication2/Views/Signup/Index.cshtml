@@ -1,0 +1,91 @@
+﻿@model MvcApplication2.Models.UserModel
+
+@{
+    ViewBag.Title = "Signup";
+}
+
+<h1>Signup</h1>
+<hr />
+
+
+@using (Html.BeginForm("index", "Signup", FormMethod.Post, new { @role = "form", @id = "frm_signUp" }))
+{
+    @Html.ValidationSummary(true)
+    
+    <div class="col-sm-6">
+        <h4>Account info</h4>
+        <hr />
+        <div class="form-group">
+            @*<label for="exampleInputEmail1">Email address</label>*@
+            @*<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">*@
+            @Html.TextBoxFor(model => model.user_name, new { @class = "form-control", @placeholder = "Your username" })
+            @Html.ValidationMessageFor(model => model.user_name)
+        </div>
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.email, new { @class = "form-control", @placeholder = "Your email address" })
+            @Html.ValidationMessageFor(model => model.email)
+        </div>
+
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.password, new { @type = "password", @class = "form-control", @placeholder = "Enter your password" })
+            @Html.ValidationMessageFor(model => model.password)
+        </div>
+
+
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.confirmpassword, new { @type = "password", @class = "form-control", @placeholder = "Enter confirm password" })
+            @Html.ValidationMessageFor(model => model.confirmpassword)
+        </div>
+
+    </div>
+    <div class="col-sm-6">
+        <h4>Personal info</h4>
+        <hr />
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.first_name, new { @class = "form-control", @placeholder = "Your first name" })
+            @Html.ValidationMessageFor(model => model.first_name)
+        </div>
+
+
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.last_name, new { @class = "form-control", @placeholder = "Your last name" })
+            @Html.ValidationMessageFor(model => model.last_name)
+        </div>
+
+
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.contact_no, new { @class = "form-control", @placeholder = "Your contact no", @type = "tel" })
+            @Html.ValidationMessageFor(model => model.contact_no)
+        </div>
+
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.address, new { @class = "form-control", @placeholder = "Your address" })
+            @Html.ValidationMessageFor(model => model.address)
+        </div>
+
+
+        <div class="form-group">
+            @Html.TextBoxFor(model => model.occupation, new { @class = "form-control", @placeholder = "Your occupation" })
+            @Html.ValidationMessageFor(model => model.occupation)
+        </div>
+
+        <div class="form-group">
+
+            <label class="radio-inline">
+                @Html.RadioButtonFor(model => model.gender, "Male", null)
+                Male
+            </label>
+            <label class="radio-inline">
+                @Html.RadioButtonFor(model => model.gender, "Female", null)
+                Female
+            </label>
+            @Html.ValidationMessageFor(model => model.gender)
+
+            <div style="float: right;">
+                <button type="submit" class="btn btn-primary">Register me</button>
+            </div>
+        </div>
+
+    </div>
+    
+}

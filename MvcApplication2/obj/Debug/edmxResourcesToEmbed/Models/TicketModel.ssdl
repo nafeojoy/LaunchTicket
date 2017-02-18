@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TicketDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="TicketDBModelStoreContainer" />
+  <!--Errors Found During Generation:
+      warning 6013: The table/view 'TicketDB.dbo.accountant' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="accountant">
+        <Property Name="acid" Type="int" />
+        <Property Name="acc_name" Type="varchar" MaxLength="50" />
+        <Property Name="password" Type="varchar" MaxLength="50" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'TicketDB.dbo.admin' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="admin">
+        <Property Name="aid" Type="int" />
+        <Property Name="admin_name" Type="varchar" MaxLength="50" />
+        <Property Name="password" Type="varchar" MaxLength="50" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'TicketDB.dbo.approve_customer' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="approve_customer">
+        <Property Name="aid" Type="int" />
+        <Property Name="cid" Type="int" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'TicketDB.dbo.check_payment' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="check_payment">
+        <Property Name="pid" Type="int" />
+        <Property Name="acid" Type="int" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'TicketDB.dbo.customer' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="customer">
+        <Property Name="ID" Type="int" />
+        <Property Name="user_name" Type="varchar" MaxLength="50" />
+        <Property Name="first_name" Type="varchar" MaxLength="50" />
+        <Property Name="last_name" Type="varchar" MaxLength="50" />
+        <Property Name="address" Type="varchar" MaxLength="50" />
+        <Property Name="contact_no" Type="varchar" MaxLength="50" />
+        <Property Name="gender" Type="varchar" MaxLength="50" />
+        <Property Name="occupation" Type="varchar" MaxLength="50" />
+        <Property Name="password" Type="varchar" MaxLength="50" />
+        <Property Name="confirmpassword" Type="varchar" MaxLength="50" />
+        <Property Name="email" Type="varchar" MaxLength="50" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'TicketDB.dbo.e-ticket' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="e-ticket">
+        <Property Name="eid" Type="int" />
+        <Property Name="train_no" Type="varchar" MaxLength="50" />
+        <Property Name="class" Type="varchar" MaxLength="50" />
+        <Property Name="no_of_seat" Type="varchar" MaxLength="50" />
+        <Property Name="seat_no" Type="varchar" MaxLength="50" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'TicketDB.dbo.fare' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="fare">
+        <Property Name="fid" Type="int" />
+        <Property Name="class" Type="varchar" MaxLength="50" />
+        <Property Name="fare" Type="varchar" MaxLength="50" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'TicketDB.dbo.maintain_acc' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="maintain_acc">
+        <Property Name="aid" Type="int" />
+        <Property Name="acid" Type="int" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'TicketDB.dbo.manageticket' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="manageticket">
+        <Property Name="aid" Type="int" />
+        <Property Name="eid" Type="int" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'TicketDB.dbo.payment' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="payment">
+        <Property Name="pid" Type="int" />
+        <Property Name="debit_card_no" Type="int" />
+        <Property Name="pincode" Type="int" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'TicketDB.dbo.schedule' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="schedule">
+        <Property Name="scid" Type="int" />
+        <Property Name="train_no" Type="varchar" MaxLength="50" />
+        <Property Name="name" Type="varchar" MaxLength="50" />
+        <Property Name="train_from" Type="varchar" MaxLength="50" />
+        <Property Name="train_to" Type="varchar" MaxLength="50" />
+        <Property Name="departure" Type="datetime" />
+        <Property Name="arrival" Type="datetime" />
+        <Property Name="off_day" Type="varchar" MaxLength="50" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'TicketDB.dbo.seat_details' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="seat_details">
+        <Property Name="seatid" Type="int" />
+        <Property Name="class" Type="varchar" MaxLength="50" />
+        <Property Name="seat_no" Type="varchar" MaxLength="50" />
+      </EntityType>
+      Errors Found During Generation:
+      warning 6013: The table/view 'TicketDB.dbo.update' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+      
+      <EntityType Name="update">
+        <Property Name="fid" Type="int" />
+        <Property Name="scid" Type="int" />
+        <Property Name="seatid" Type="int" />
+        <Property Name="aid" Type="int" />
+      </EntityType>-->
+</Schema>

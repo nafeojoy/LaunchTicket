@@ -1,0 +1,99 @@
+﻿@model MvcApplication2.Models.Ticket
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Ticket</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.L_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.L_ID)
+            @Html.ValidationMessageFor(model => model.L_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Start)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Start)
+            @Html.ValidationMessageFor(model => model.Start)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Destination)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Destination)
+            @Html.ValidationMessageFor(model => model.Destination)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LC_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LC_ID)
+            @Html.ValidationMessageFor(model => model.LC_ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.L_Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.L_Name)
+            @Html.ValidationMessageFor(model => model.L_Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Dept_Time)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Dept_Time)
+            @Html.ValidationMessageFor(model => model.Dept_Time)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Fare_Deck)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Fare_Deck)
+            @Html.ValidationMessageFor(model => model.Fare_Deck)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Fare_1st_Class)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Fare_1st_Class)
+            @Html.ValidationMessageFor(model => model.Fare_1st_Class)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Fare_Cabin)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Fare_Cabin)
+            @Html.ValidationMessageFor(model => model.Fare_Cabin)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

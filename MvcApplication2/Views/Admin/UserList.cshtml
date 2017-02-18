@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MvcApplication2.Models.UserModel>
+
+@{
+    ViewBag.Title = "UserList";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>UserList</h2>
+<hr />
+
+
+<div class="table-responsive">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr>
+                <td style="display: none;">ID</td>
+                <td>User Name</td>
+                <td>Full Name</td>
+                <td>Address</td>
+                <td>Email</td>
+                <td>Phone</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="display: none;">@item.ID</td>
+                    <td>@item.user_name</td>
+                    <td>@item.first_name @item.last_name</td>
+                    <td>@item.address</td>
+                    <td>@item.email</td>
+                    <td>@item.contact_no</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

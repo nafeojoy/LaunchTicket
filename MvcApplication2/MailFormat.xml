@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<MailFormats>
+  <MailFormat Id="Email">
+    <Subject>Ticket Information- 0?</Subject>
+    <Body>
+      <![CDATA[ 
+     
+     <h1> Your Launch Ticket Information </h1> 
+     <BR></BR><Br><H2>Name Of The User :  1?</H2>
+     <Br><H2>Start :  2?</H2>
+     <Br><H2>Destination :  3?</H2>
+     <Br><H2>Departure Time :  4?</H2>
+     <Br><H2>Launch Name :  5?</H2>
+     <Br><H2> Date : 7?</H2>
+     </BR><Br><H2>Your Ticket Price is  6?</H2><Br>
+     <Br><H2>Warning : You Have to Collect Your Ticket Within 3 days</H2><Br>
+     
+     <!--<images>
+     <image>
+    <filename>BKash_logo.png</filename>
+    <description>Anthony Robbins</description>
+    </image>
+    </images>-->
+     
+     
+     ]]>
+    </Body>
+    
+  </MailFormat>
+  <MailFormat Id="FeedBack">
+    <Subject>FeedBack - 2?</Subject>
+    <Body>
+      <![CDATA[ 
+        
+     <BR></BR><Br><H1>User Name :  0?</H1>
+     <Br><H1>User Email :  1?</H1><Br>
+     <BR></BR><Br><H1>User Message :  3?</H1><Br>
+
+     ]]>
+    </Body>
+  </MailFormat>
+</MailFormats>

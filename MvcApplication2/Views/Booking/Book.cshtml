@@ -1,0 +1,50 @@
+﻿@model MvcApplication2.Models.Ticket
+
+@{
+    ViewBag.Title = "Book";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*@Html.ActionLink("Bok", "Booking", new {})
+   *@
+<fieldset>
+    <h1>Ticket Info : </h1>
+
+        <P>Start : @Html.DisplayFor(model => model.Start) </P> 
+         
+
+    <div class="display-field">
+        <P>Destination : @Html.DisplayFor(model => model.Destination) </P> 
+        
+    </div>
+
+     <div class="display-field">
+         <P>Launch Name :  @Html.DisplayFor(model => model.L_Name)</P> 
+        
+    </div>
+   
+    <div class="display-label">
+        <P>Departure Time  : @Html.DisplayFor(model => model.Dept_Time)</P>        
+    </div>
+    <div class="display-label">
+        <P>Ticket Date  : @Html.DisplayFor(model => model.Date)</P>        
+    </div>
+   
+   
+</fieldset>
+     
+        
+
+@*  for(  ;)
+    {
+     <h1> Your Launch Ticket Information : </h1> 
+     <P>Name Of The User :  nafeo</P>
+     <P>Start :  Dhaka</P>
+     <P>Destination :  Khepupara</P>
+     <P>Departure Time :  17:30</P>
+     <P>Launch Name :  MV Pubali</P><Br>
+     </BR><Br><P>Your Ticket Price is  400</P><Br>
+     <P>Warning : You Have to Collect Your Ticket Within 3 days</P>
+    }
+   *@
+
